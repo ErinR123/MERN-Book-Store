@@ -29,7 +29,7 @@ export default function SearchForm() {
     <>
       <form onSubmit={handleSubmit}>
         <input name="query" type="text" className="border-2 p-2 bg-gray-200" />
-        <button type="button">Search</button>
+        <button type="submit">Search</button>
       </form>
       <SearchResult books={books} />
     </>

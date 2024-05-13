@@ -46,26 +46,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// This section will help you update a record by id.
-router.patch("/:id", async (req, res) => {
-  try {
-    const query = { _id: new ObjectId(req.params.id) };
-    const updates = {
-      $set: {
-        name: req.body.name,
-        position: req.body.position,
-        level: req.body.level,
-      },
-    };
 
-    let collection = await db.collection("books");
-    let result = await collection.updateOne(query, updates);
-    res.send(result).status(200);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error updating record");
-  }
-});
+
 
 // This section will help you delete a record
 router.delete("/:id", async (req, res) => {
