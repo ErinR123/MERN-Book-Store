@@ -1,17 +1,18 @@
-import React from 'react'
+import React from "react";
 
-export default function SearchResult({books}) {
+import BookBrowse from "./BookBrowse";
+
+export default function SearchResult({ books }) {
+  
+
   return (
-    <>
-<h1>searchResults</h1>
-   <ul>
-    {books.map(book => (
-        <li>
-            {book[0].title}
-            <img src={book[0].image}/>
+    <ul>
+      {books.map((book) => (
+        <li key={book.id}>
+          <h3>{book.volumeInfo.title}</h3>
+          <img src={ book.volumeInfo?.imageLinks?.thumbnail} />
         </li>
-    ))}
-   </ul>
-    </>
-  )
+      ))}
+    </ul>
+  );
 }
