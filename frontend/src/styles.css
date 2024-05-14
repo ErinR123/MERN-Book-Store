@@ -2,3 +2,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-navy {
+    color: #3b5998; /* Replace with your desired light navy color */
+  }
+  
+  .custom-width {
+    width: 17rem; /* Adjust as needed */
+  }
+  
+.custom-height {
+    height: 17rem;;
+}
+
+/* In your CSS or Tailwind configuration */
+
