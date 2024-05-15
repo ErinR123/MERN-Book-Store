@@ -1,7 +1,7 @@
 // import express from "express";
 const express = require('express');
 
-const db = require("../db/connection.js");
+const db = require("../config/database");
 
 
 // This help convert the id from string to ObjectId for the _id.

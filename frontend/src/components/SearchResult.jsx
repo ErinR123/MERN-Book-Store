@@ -1,18 +1,17 @@
 import React from "react";
 
 import BookBrowse from "./BookBrowse";
+import BookCard from "./cards/BookCard";
 
-export default function SearchResult({ books }) {
-  
-
+const SearchResult = ({ books }) => {
   return (
-    <ul>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {books.map((book) => (
-        <li key={book.id}>
-          <h3>{book.volumeInfo.title}</h3>
-          <img src={ book.volumeInfo?.imageLinks?.thumbnail} />
-        </li>
+        <BookCard key={book.id} book={book} />
       ))}
-    </ul>
+    </div>
   );
-}
+};
+
+export default SearchResult;
+

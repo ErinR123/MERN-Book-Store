@@ -27,11 +27,20 @@ export default function SearchForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input name="query" type="text" className="border-2 p-2 bg-gray-200" />
-        <button type="submit">Search</button>
-      </form>
+      <div className="flex justify-center items-center mb-6">
+        <input
+          name="query"
+          type="text"
+          className="border-b-2 border-gray-300 px-4 py-2 focus:outline-none focus:border-blue-500"
+          placeholder="Search books..."
+        />
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 ml-2 rounded">
+          Search
+        </button>
+      </div>
       <SearchResult books={books} />
     </>
   );
 }
+
+
