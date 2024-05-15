@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { signUp } from '../utilities/users-service';
+import logo2 from "../../public/logo2.jpg"
 
 export default class SignUpForm extends Component {
   state = {
@@ -32,11 +33,12 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900" style={{fontFamily: 'Pacifico, cursive'}}>PlotPoint Books</h2>
-          </div>
+        <div className="flex items-center justify-center">
+          <img src={logo2} alt="Logo" className="h-24 w-auto" /> {/* Adjust the class to set the size of the logo */}
+          <h2 className="ml-4 mt-5 text-3xl font-extrabold text-gray-900" style={{ fontFamily: 'Pacifico, cursive' }}>PlotPoint Books.</h2>
+        </div>
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <div className="bg-white rounded-md shadow-md p-4">
               <div>

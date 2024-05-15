@@ -12,8 +12,8 @@ const BookCard = ({ book }) => {
           />
         )}
       </div>
-      <div className="px-4 py-2 bg-white rounded-b">
-        <div className="font-bold text-xs mb-1">{book.volumeInfo.title}</div>
+      <div className="px-4 py-2 bg-gray-100 rounded-b">
+        <div className="font-bold text-xs">{book.volumeInfo.title}</div>
         {book.volumeInfo.authors && (
           <p className="text-gray-700 text-xs mb-1">
             Author(s): {book.volumeInfo.authors.join(", ")}

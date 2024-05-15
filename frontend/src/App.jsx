@@ -6,7 +6,7 @@ import "./styles.css";
 import BookBrowse from "./components/BookBrowse";
 import Navbar from "./components/Navbar";
 import LoginForm from "./forms/LoginForm";
-import Home from "./components/Home";
+import Sale from "./components/Sale";
 import bannerImage from "../public/bannerImage.jpg";
 
 // Updated import statement
@@ -37,9 +37,9 @@ function App() {
                 <p className="text-white text-2xl font-bold"></p>
               </div>
             </div>
-
+            <Sale />
             <Routes>
-              <Route path="/home" element={<Home />} />
+              {/* <Route path="/home" element={<Home />} /> */}
               <Route path="/allBooks" element={<BookBrowse />} />
               <Route path="/login" element={<LoginForm />} />
             </Routes>
