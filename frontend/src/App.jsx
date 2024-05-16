@@ -8,14 +8,13 @@ import Navbar from "./components/Navbar";
 import LoginForm from "./forms/LoginForm";
 import Sale from "./components/Sale";
 import bannerImage from "../public/bannerImage.jpg";
+import OrderDetail from "./components/OrderDetail";
+// import Bookdetail from './components/Bookdetail';
 
-// Updated import statement
-// import "./App.css";
+
 
 function App() {
   const [user, setUser] = useState(getUser());
-
-  console.log(user);
 
   return (
     <div className="white">
@@ -37,10 +36,12 @@ function App() {
                 <p className="text-white text-2xl font-bold"></p>
               </div>
             </div>
-            <Sale />
+            {/* <Sale /> */}
             <Routes>
-              {/* <Route path="/home" element={<Home />} /> */}
+            
+              {/* <Route path="/book/:id" element={<Bookdetail />} /> */}
               <Route path="/allBooks" element={<BookBrowse />} />
+              <Route path="/cart" element={<OrderDetail />} />
               <Route path="/login" element={<LoginForm />} />
             </Routes>
           </div>

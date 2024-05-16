@@ -20,6 +20,8 @@ app.use("/users", userRoutes);
 app.use("/book", books);
 app.use("/searchBooksApi", searchBooksApi);
 
+app.use('/orders', require('./routes/orders'));
+
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));

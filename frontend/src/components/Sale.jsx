@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BookCard from "./cards/BookCard";
 
-export default function Home() {
+export default function Sale() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const query = "dog";

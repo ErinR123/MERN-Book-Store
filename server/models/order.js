@@ -52,19 +52,33 @@ orderSchema.statics.getCart = function(userId) {
 };
 
 // Instance method for adding an item to a cart (unpaid order)
-orderSchema.methods.addItemToCart = async function (bookId) {
+orderSchema.methods.addBookToCart = async function (bookData) {
+
+
+
+  // if book from api is not in DB add it to the DB then add it to the cart
+  const Book = mongoose.model("Book");
+  let book = await Book.find({ title: bookData.title })
+
+  if (!book) {
+    book = await Book.create(bookData)
+  }
+
+
+
+
+
   // 'this' keyword is bound to the cart (order doc)
   const cart = this;
   // Check if the item already exists in the cart
-  const orderItem = cart.orderItems.find(orderItem => orderItem.item._id.equals(bookId));
+  const orderItem = cart.orderItems.find(orderItem => orderItem._id.equals(book._id));
   if (orderItem) {
     // It already exists, so increase the qty
     orderItem.qty += 1;
   } else {
     // Get the item from the "catalog"
     // Note how the mongoose.model method behaves as a getter when passed one arg vs. two
-    const Book = mongoose.model('Book');
-    const book = await Book.findById(bookId);
+    // const book = await Book.findById(bookId);
     // The qty of the new lineItem object being pushed in defaults to 1
     cart.orderItems.push({ book });
   }

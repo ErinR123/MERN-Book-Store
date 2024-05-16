@@ -1,6 +1,11 @@
 import React from "react";
+import * as ordersAPI from "../../utilities/orders-api";
 
 const BookCard = ({ book }) => {
+  function handleAddToOrder() {
+    console.log("Add book to order")
+    ordersAPI.addBookToCart(book.volumeInfo);
+  }
   return (
     <div className="max-w-xs mb-4 transition duration-300 transform hover:scale-105">
       <div className="w-full h-32 flex justify-center items-center">
@@ -19,25 +24,15 @@ const BookCard = ({ book }) => {
             Author(s): {book.volumeInfo.authors.join(", ")}
           </p>
         )}
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+          onClick={handleAddToOrder}
+        >
+          Buy
+        </button>
       </div>
     </div>
   );
 };
 
 export default BookCard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
