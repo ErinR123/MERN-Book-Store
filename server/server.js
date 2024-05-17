@@ -11,7 +11,7 @@ const searchBooksApi = require("./routes/searchBooksApi");
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 
 app.use(cors());
@@ -24,7 +24,7 @@ app.use('/orders', require('./routes/orders'));
 
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 
