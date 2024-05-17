@@ -8,7 +8,6 @@ export default function OrderDetail() {
     async function getCart() {
       const updatedCart = await ordersAPI.getCart();
       setCart(updatedCart);
-      console.log("Foad ----------", { updatedCart });
     }
     getCart();
   }, []);

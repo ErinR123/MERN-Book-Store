@@ -10,7 +10,7 @@ export default async function sendRequest(url, method = "GET", payload = null) {
   }
 
   const token = getToken();
-  console.log(`User's session token is: ${token}`)
+  console.log(`User"s session token is: ${token}`)
   if (token) {
     options.headers ||= {};
     options.headers.Authorization = `Bearer ${token}`;

@@ -1,6 +1,6 @@
-import express from 'express';
-import usersCtrl from '../controllers/users.js';
-import ensureLoggedIn from '../config/ensureLoggedIn.js';
+import express from "express";
+import usersCtrl from "../controllers/users.js";
+import ensureLoggedIn from "../config/ensureLoggedIn.js";
 const usersRouter = express.Router();
 
 

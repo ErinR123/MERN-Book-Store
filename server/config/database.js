@@ -1,5 +1,5 @@
 
-import * as mongoose from 'mongoose';
+import * as mongoose from "mongoose";
 
 
 export default async function initDatabase(){
@@ -8,7 +8,7 @@ export default async function initDatabase(){
     
     db = mongoose.connections[0];
     
-    db.on('connected', function () {
+    db.on("connected", function () {
       console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
     });
   }).catch((err) => {console.log(err)});

@@ -1,7 +1,7 @@
 
-import jwt from 'jsonwebtoken';
-import {compare} from 'bcrypt';
-import User from '../models/userModel.js'
+import jwt from "jsonwebtoken";
+import {compare} from "bcrypt";
+import User from "../models/userModel.js"
 
 
  export default {
@@ -21,7 +21,7 @@ async function create(req, res, next) {
       res.json(token)
       next();
     }else{
-      throw new Error('Could not find the user, please Sign Up.')
+      throw new Error("Could not find the user, please Sign Up.")
     }
  
   } catch (err) {
