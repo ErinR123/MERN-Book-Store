@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-// Ensure the Category model is processed by Mongoose (for populating Menu Item queries)
+const mongoose = require("mongoose");
 
-const bookSchema = require('./bookSchema');
+const bookSchema = require("./bookSchema");
 
-module.exports = mongoose.model('Book', bookSchema);
+module.exports = mongoose.model("Book", bookSchema);
