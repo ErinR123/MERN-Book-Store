@@ -1,11 +1,10 @@
-import React from "react";
 import SearchResult from "../components/SearchResult";
 import { useState, useEffect } from "react";
+import logo2 from '../../public/logo2.jpg'
 
 export default function SearchForm() {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState(null);
-  // const [search, setSearch] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,8 +26,10 @@ export default function SearchForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}
-      className="flex justify-center items-center mb-6">
+      <form
+        onSubmit={handleSubmit}
+        className="flex justify-center items-center mb-6"
+      >
         <input
           name="query"
           type="text"
@@ -38,10 +39,9 @@ export default function SearchForm() {
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 ml-2 rounded">
           Search
         </button>
+        <img src={logo2} alt="Logo" className="h-21 mr-2" />
       </form>
       <SearchResult books={books} />
     </>
   );
 }
-
-

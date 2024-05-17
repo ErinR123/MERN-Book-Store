@@ -1,9 +1,6 @@
-import React from "react";
-
-import BookBrowse from "./BookBrowse";
 import BookCard from "./cards/BookCard";
 
-const SearchResult = ({ books, handleAddToOrder }) => {
+export default function SearchResult({ books }) {
   console.log(books)
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -14,5 +11,5 @@ const SearchResult = ({ books, handleAddToOrder }) => {
   );
 };
 
-export default SearchResult;
+
 
