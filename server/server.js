@@ -1,32 +1,51 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-dotenv.config({path: "../.env"});
-const path = require('path');
-const userRoutes = require('./routes/users');
+// const express = require("express");
+import express from 'express';
+import cors from 'cors';
+// const cors = require("cors");
+import {config} from 'dotenv';
+// const dotenv = require("dotenv");
+config({path: "../.env"});
+import path from 'path';
+// const path = require('path');
+import initDatabase from './config/database.js';
+// const userRoutes = require('./routes/users');
+import usersRouter from './routes/users.js';
 
-const books = require("./routes/book");
-const searchBooksApi = require("./routes/searchBooksApi");
+
+import ordersRouter from './routes/orders.js'
+// const searchBooksApi = require("./routes/searchBooksApi");
+import searchBooksApi from './routes/searchBooksApi.js';
+
+import checkToken from "./config/checkToken.js"
+
+import ensureLoggedIn from "./config/ensureLoggedIn.js"
 
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../dist')));
-
-
 app.use(cors());
 app.use(express.json());
-app.use("/users", userRoutes);
-app.use("/book", books);
-app.use("/searchBooksApi", searchBooksApi);
 
-app.use('/orders', require('./routes/orders'));
+initDatabase();
+
+
+app.use("/api/users", usersRouter);
+
+app.use(express.static(path.resolve('../dist')));
+
+app.use(checkToken);
+
+app.use("/searchBooksApi",ensureLoggedIn, searchBooksApi);
+
+
+app.use('/api/orders',ensureLoggedIn, ordersRouter);
+
+
 
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+  res.sendFile(path.resolve( '../dist', 'index.html'));
 });
-
 
 // start the Express server
 app.listen(PORT, () => {

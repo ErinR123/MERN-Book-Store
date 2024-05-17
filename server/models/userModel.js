@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt");
+
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
+
 
 const SALT_ROUNDS = 6;
 
@@ -33,4 +34,5 @@ userSchema.pre("save", async function(next) {
   return next();
 });
 
-module.exports = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
+export default User

@@ -1,6 +1,6 @@
-const Order = require("../models/order");
+import Order from "../models/order.js";
 
-module.exports = {
+export default{
   cart,
   addToCart,
   setItemQtyInCart,
@@ -9,15 +9,23 @@ module.exports = {
 
 
 async function cart(req, res) {
-  const cart = await Order.getCart(req.user._id);
-  res.json(cart);
+  if(req.user){
+    const cart = await Order.getCart(req.user._id);
+    res.json(cart);
+  }else{
+    res.json({message: "User is not signed in! :("});
+  }
 };
 
 async function addToCart(req, res) {
-  console.log("from server controller addToCart", req.body.book)
-  const cart = await Order.getCart(req.user._id);
-  await cart.addBookToCart(req.body.book);
-  res.json(cart);
+  console.log("from server controller addToCart", JSON.parse(JSON.stringify(req.body, "", 2)))
+  if (req.user){
+    const cart = await Order.getCart(req.user._id);
+    await cart.addBookToCart(req.body);
+    res.json(cart);
+  } else {
+    res.json({message: "User is not signed in "});
+  }
 };
 
 

@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import BookCard from "./cards/BookCard";
-import bannerImage from "../../public/bannerImage.jpg"
-
+import bannerImage from "../../public/bannerImage.jpg";
+import sendRequest from "../utilities/send-request";
 export default function Sale() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const query = "dog";
     const URL = `http://localhost:5050/searchBooksApi?query=${query}`;
 
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data.items);
-      });
+    sendRequest(URL).then((data) => {
+      // Filter books that have a 50% off sale
+      const saleBooks = data.items.filter(
+        (book) =>
+          (book.saleInfo?.listPrice?.amount ||
+            book.saleInfo?.retailPrice?.amount) && // Check if price is set
+          (book.saleInfo?.listPrice?.amount ||
+            book.saleInfo?.retailPrice?.amount) * 0.5 // Check if price is 50% off
+      );
+      setBooks(saleBooks);
+    });
   }, []);
 
   return (

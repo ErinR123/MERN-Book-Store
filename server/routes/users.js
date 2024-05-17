@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const usersCtrl = require("../controllers/users");
-const ensureLoggedIn = require("../config/ensureLoggedIn");
+import express from 'express';
+import usersCtrl from '../controllers/users.js';
+import ensureLoggedIn from '../config/ensureLoggedIn.js';
+const usersRouter = express.Router();
 
 
-router.post("/", usersCtrl.create);
+usersRouter.post("/", usersCtrl.create);
 
-router.post("/login", usersCtrl.login);
+usersRouter.post("/login", usersCtrl.login);
 
-module.exports = router;
+export default usersRouter;

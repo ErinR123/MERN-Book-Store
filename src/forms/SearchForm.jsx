@@ -1,6 +1,7 @@
 import SearchResult from "../components/SearchResult";
 import { useState, useEffect } from "react";
-import logo2 from '../../public/logo2.jpg'
+import logo2 from "../../public/logo2.jpg";
+import sendRequest from "../utilities/send-request";
 
 export default function SearchForm() {
   const [books, setBooks] = useState([]);
@@ -16,12 +17,11 @@ export default function SearchForm() {
     if (!query) return;
 
     const URL = `http://localhost:5050/searchBooksApi?query=${query}`;
-
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data.items);
-      });
+    // .then((res) => res.json())
+    sendRequest(URL).then((data) => {
+      console.log({ data });
+      setBooks(data.items);
+    });
   }, [query]);
 
   return (

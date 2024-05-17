@@ -1,14 +1,14 @@
-const express = require("express");
-const router = express.Router();
-const ordersCtrl = require("../controllers/orders");
 
+import  express  from "express";
+import ordersCtrl from '../controllers/orders.js'
 
-router.get("/cart", ordersCtrl.cart);
+const ordersRouter = express.Router();
+ordersRouter.get("/cart", ordersCtrl.cart);
 
-router.post("/cart/books", ordersCtrl.addToCart);
+ordersRouter.post("/cart/books", ordersCtrl.addToCart);
 
-router.post("/cart/checkout", ordersCtrl.checkout);
+ordersRouter.post("/cart/checkout", ordersCtrl.checkout);
 
-router.put("/cart/qty", ordersCtrl.setItemQtyInCart);
+ordersRouter.put("/cart/qty", ordersCtrl.setItemQtyInCart);
 
-module.exports = router;
+export default ordersRouter;

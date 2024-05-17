@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const bookSchema = require("./bookSchema");
+import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
+import bookSchema from "./bookSchema.js";
+import Book from "./book.js";
+
 
 const orderItemSchema = new Schema({
   qty: { type: Number, default: 1 },
@@ -11,7 +13,7 @@ const orderItemSchema = new Schema({
 });
 
 orderItemSchema.virtual("extPrice").get(function() {
-  return this.qty * this.item.price;
+  return this.qty * this.book.price;
 });
 
 
@@ -51,18 +53,20 @@ orderSchema.statics.getCart = function(userId) {
 
 
 orderSchema.methods.addBookToCart = async function (bookData) {
-  const Book = mongoose.model("Book");
+  console.log({bookData})
   let book = await Book.find({ title: bookData.title })
 
   if (!book) {
-    book = await Book.create(bookData)
+    book=new Book(bookData)
+    book.save()
+    // book = await Book.create(bookData)
   }
   const cart = this;
   const orderItem = cart.orderItems.find(orderItem => orderItem._id.equals(book._id));
   if (orderItem) {
     orderItem.qty += 1;
   } else {
-    cart.orderItems.push({ book });
+    cart.orderItems=[{book:bookData }];
   }
   return cart.save();
 };
@@ -78,4 +82,5 @@ orderSchema.methods.setBookQty = function(bookId, newQty) {
   return cart.save();
 };
 
-module.exports = mongoose.model("Order", orderSchema);
+
+export default model("Order", orderSchema);

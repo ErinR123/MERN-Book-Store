@@ -2,6 +2,7 @@ import { getToken } from "./users-service";
 
 export default async function sendRequest(url, method = "GET", payload = null) {
 
+  console.log(`Sending ${method} request at url ${url}`)
   const options = { method };
   if (payload) {
     options.headers = { "Content-Type": "application/json" };
@@ -9,6 +10,7 @@ export default async function sendRequest(url, method = "GET", payload = null) {
   }
 
   const token = getToken();
+  console.log(`User's session token is: ${token}`)
   if (token) {
     options.headers ||= {};
     options.headers.Authorization = `Bearer ${token}`;

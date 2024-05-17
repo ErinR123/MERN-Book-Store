@@ -1,17 +1,22 @@
-const mongoose = require("mongoose");
 
-const bookSchema = mongoose.Schema(
+import {Schema} from "mongoose";
+
+const bookSchema = Schema(
     {
         title: {
             type: String,
             required: true,
         },
-        author: {
+        authors: [{
             type: String,
             required: true,
+        }],
+        publisher: {
+            type: String,
+            required: true, 
         },
-        publishYear: {
-            type: Number,
+        publishedDate: {
+            type: String,
             required: true, 
         },
     }, 
@@ -20,4 +25,4 @@ const bookSchema = mongoose.Schema(
     }
 );
 
-module.exports = bookSchema;
+export default bookSchema;

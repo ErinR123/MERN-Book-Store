@@ -2,9 +2,11 @@ import { useState } from "react";
 import LoginForm from "../forms/LoginForm";
 import SignUpForm from "../forms/SignupForm";
 
-export default function AuthPage({ setUser }) {
+export default function AuthPage({ setUser, onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
-
+  const handleLogin = (user) => {
+    setUser(user); // Update the user state in App component
+  };
   return (
     <main className="AuthPage">
       <div>
@@ -13,7 +15,7 @@ export default function AuthPage({ setUser }) {
         </h3>
       </div>
       {showLogin ? (
-        <LoginForm setUser={setUser} />
+        <LoginForm setUser={setUser} onLogin={handleLogin} />
       ) : (
         <SignUpForm setUser={setUser} />
       )}
