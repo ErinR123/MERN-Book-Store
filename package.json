@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "npm run build && cd ./server && npm i && node server.js"
+    "start": "npm run build && cd ./server && npm i --production=false && node server.js"
   },
   "proxy": "http://localhost:5050/api",
   "dependencies": {
