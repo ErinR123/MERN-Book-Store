@@ -26,14 +26,14 @@ To get started with PlotPoint Books, follow these steps:
 
 ![Sale](./public/ReadMePhotos/SalePage.png)
 
-3. **Browse Book Store**: Use the navigation bar to explore the book store and search for specific books using filters or the search bar.
+3. **Browse Book Store**: Use the navigation bar to explore the book store and search for specific books using the search bar.
 
 ![Book Store](./public/ReadMePhotos/Bookstore.png)
 ![Book Store](./public/ReadMePhotos/BookstoreSearched.png)
 
 4. **Add to Cart**: When you find a book you want to purchase, click the "Buy" button on the book's detail page to add it to your cart.
 
-5. **View Cart**: To view the books added to your cart, click on the cart icon in the navigation bar. Here, you can review your selections and proceed to checkout when ready.
+5. **View Cart**: To view the books added to your cart, click on the cart icon in the navigation bar. 
 
 - deployment link: 
 
