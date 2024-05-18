@@ -6,7 +6,7 @@ export default function Sale() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const query = "dog";
-    const URL = `http://localhost:5050/searchBooksApi?query=${query}`;
+    const URL = `/api/searchBooksApi?query=${query}`;
 
     sendRequest(URL).then((data) => {
       // Filter books that have a 50% off sale

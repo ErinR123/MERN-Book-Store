@@ -35,7 +35,7 @@ app.use(express.static(path.resolve("../dist")));
 
 app.use(checkToken);
 
-app.use("/searchBooksApi",ensureLoggedIn, searchBooksApi);
+app.use("/api/searchBooksApi",ensureLoggedIn, searchBooksApi);
 
 
 app.use("/api/orders",ensureLoggedIn, ordersRouter);

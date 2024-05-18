@@ -16,7 +16,7 @@ export default function SearchForm() {
   useEffect(() => {
     if (!query) return;
 
-    const URL = `http://localhost:5050/searchBooksApi?query=${query}`;
+    const URL = `/api/searchBooksApi?query=${query}`;
     // .then((res) => res.json())
     sendRequest(URL).then((data) => {
       console.log({ data });
